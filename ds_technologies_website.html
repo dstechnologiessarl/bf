@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS Technologies - Solutions Informatiques et Technologiques</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        /* Header et Navigation */
+        header {
+            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🔧";
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 102, 0, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e0e0e0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #004d99;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0066cc, #004d99);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6600, #e55a00);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #004d99;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #ff6600);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
+            border-color: #0066cc;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: #004d99;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #004d99;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6600;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #0066cc, #004d99);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: '💻🔧🛡️🌐';
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            background: #f8f9fa;
+            height: 250px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.2);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.8), rgba(255, 102, 0, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-icon {
+            font-size: 4rem;
+            color: #0066cc;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .gallery-item:hover .gallery-icon {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .gallery-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #004d99;
+            transition: color 0.3s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .gallery-item:hover .gallery-title {
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #004d99 0%, #0066cc 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item span {
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff6600, #e55a00);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #004d99;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .services,
+            .about,
+            .gallery,
+            .contact {
+                padding: 2rem 1rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations d'entrée */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll smooth */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">DS Technologies</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="hero-content fade-in">
+                <h1>DS Technologies</h1>
+                <p>Votre partenaire de confiance pour toutes vos solutions informatiques et technologiques. Nous accompagnons votre transformation digitale avec expertise et innovation.</p>
+                <a href="#contact" class="cta-button">Contactez-nous</a>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>Nos Services</h2>
+                    <p>Des solutions complètes adaptées à vos besoins technologiques</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <span class="service-icon">🛒</span>
+                        <h3>Vente de Matériels Informatiques</h3>
+                        <p>Large gamme d'équipements informatiques de qualité : ordinateurs, périphériques, composants et accessoires pour particuliers et entreprises.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <span class="service-icon">🔧</span>
+                        <h3>Maintenance & Dépannage</h3>
+                        <p>Service de maintenance préventive et corrective, dépannage rapide sur site ou en atelier pour tous types de matériels informatiques.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <span class="service-icon">💾</span>
+                        <h3>Installation de Logiciels</h3>
+                        <p>Installation et configuration de systèmes d'exploitation, logiciels métier, mise à jour et optimisation de vos environnements de travail.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <span class="service-icon">🛡️</span>
+                        <h3>Sécurité & Cybersécurité</h3>
+                        <p>Protection de vos données et systèmes : antivirus, pare-feu, sauvegardes sécurisées et audits de sécurité pour une tranquillité d'esprit totale.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <span class="service-icon">🌐</span>
+                        <h3>Création Web & Applications</h3>
+                        <p>Développement de sites web modernes, applications mobiles et solutions digitales sur mesure pour développer votre présence en ligne.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <span class="service-icon">🎨</span>
+                        <h3>Infographie & Design</h3>
+                        <p>Création de logos, affiches, bannières et supports visuels professionnels pour renforcer votre identité visuelle et communication.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <span class="service-icon">🎓</span>
+                        <h3>Formation & Assistance</h3>
+                        <p>Formation personnalisée aux outils numériques, accompagnement et assistance technique pour optimiser votre utilisation des technologies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="apropos" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text fade-in">
+                        <h2>À Propos de DS Technologies</h2>
+                        <p>Depuis notre création, DS Technologies s'est imposée comme un acteur incontournable dans le domaine des solutions informatiques et technologiques. Notre mission est d'accompagner nos clients dans leur transformation digitale en proposant des services de qualité et des solutions innovantes.</p>
+                        <p>Notre équipe d'experts passionnés met son savoir-faire au service de votre réussite, en alliant compétences techniques pointues et approche personnalisée pour répondre à tous vos défis technologiques.</p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Clients satisfaits</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">1000+</span>
+                                <span class="stat-label">Projets réalisés</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">Années d'expérience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Support technique</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual fade-in"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galerie" class="gallery">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>Nos Réalisations</h2>
+                    <p>Découvrez quelques exemples de nos projets et réalisations</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in">
+                        <span class="gallery-icon">💻</span>
+                        <h3 class="gallery-title">Systèmes Informatiques</h3>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <span class="gallery-icon">🌐</span>
+                        <h3 class="gallery-title">Sites Web Modernes</h3>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <span class="gallery-icon">📱</span>
+                        <h3 class="gallery-title">Applications Mobiles</h3>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <span class="gallery-icon">🎨</span>
+                        <h3 class="gallery-title">Créations Graphiques</h3>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <span class="gallery-icon">🛡️</span>
+                        <h3 class="gallery-title">Solutions Sécurisées</h3>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <span class="gallery-icon">⚙️</span>
+                        <h3 class="gallery-title">Maintenance Système</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info fade-in">
+                        <h2>Contactez-nous</h2>
+                        <p>Prêt à démarrer votre projet ? Notre équipe est là pour vous accompagner et répondre à tous vos besoins technologiques.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span>📍</span>
+                                <span>Rue BECEAO immeuble Diawara 3e Etage, Ouagadougou, Burkina Faso</span>
+                            </div>
+                            <div class="contact-item">
+                                <span>📞</span>
+                                <span>+226 66 02 25 25</span>
+                            </div>
+                            <div class="contact-item">
+                                <span>✉️</span>
+                                <span>contact.dstechnologies@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <span>🕒</span>
+                                <span>Lun - Sam : 8h00 - 18h00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form fade-in">
+                        <form action="https://getform.io/f/byvymgza" method="POST" onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <label for="nom">Nom complet</label>
+                                <input type="text" id="nom" name="nom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">Téléphone</label>
+                                <input type="tel" id="telephone" name="telephone">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service souhaité</label>
+                                <select id="service" name="service" style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.9); font-size: 1rem;">
+                                    <option value="">Sélectionnez un service</option>
+                                    <option value="vente">Vente de matériels informatiques</option>
+                                    <option value="maintenance">Maintenance & Dépannage</option>
+                                    <option value="installation">Installation de logiciels</option>
+                                    <option value="securite">Sécurité & Cybersécurité</option>
+                                    <option value="web">Création Web & Applications</option>
+                                    <option value="infographie">Infographie & Design</option>
+                                    <option value="formation">Formation & Assistance</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Décrivez votre projet ou votre besoin..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Envoyer le message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DS Technologies. Tous droits réservés. | L'innovantion au coeur de vos besions informatique</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle pour mobile
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Fermer le menu mobile lors du clic sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Animation d'apparition des éléments
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = Math.random() * 0.3 + 's';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec la classe fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gestion du formulaire de contact
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Récupération des données du formulaire
+            const formData = new FormData(event.target);
+            const nom = formData.get('nom');
+            const email = formData.get('email');
+            const service = formData.get('service');
+            
+            // Simulation d'envoi
+            const submitBtn = event.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            // Simulation du temps d'envoi
+            setTimeout(() => {
+                submitBtn.textContent = 'Message envoyé ✓';
+                submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20a639)';
+                
+                // Réinitialisation après 3 secondes
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = 'linear-gradient(135deg, #ff6600, #e55a00)';
+                    event.target.reset();
+                    
+                    // Affichage d'un message de confirmation
+                    showNotification('Merci ' + nom + ' ! Votre message a été envoyé avec succès. Nous vous recontacterons dans les plus brefs délais.');
+                }, 3000);
+            }, 2000);
+        }
+
+        // Fonction pour afficher les notifications
+        function showNotification(message) {
+            // Création de l'élément notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #28a745, #20a639);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+                z-index: 10000;
+                max-width: 400px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                font-weight: 500;
+                line-height: 1.4;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Animation d'entrée
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Suppression automatique après 5 secondes
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // Navigation fluide avec highlighting des sections actives
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Effet parallaxe léger pour le hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Animation des compteurs dans la section "À propos"
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = counter.textContent.replace(/[^0-9]/g, '');
+                const suffix = counter.textContent.replace(/[0-9]/g, '');
+                
+                if (target) {
+                    let count = 0;
+                    const increment = Math.ceil(target / 50);
+                    
+                    const timer = setInterval(() => {
+                        count += increment;
+                        if (count >= target) {
+                            count = target;
+                            clearInterval(timer);
+                        }
+                        counter.textContent = count + suffix;
+                    }, 50);
+                }
+            });
+        }
+
+        // Observer pour l'animation des compteurs
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const aboutStats = document.querySelector('.about-stats');
+        if (aboutStats) {
+            statsObserver.observe(aboutStats);
+        }
+
+        // Effet de typing pour le titre principal
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialisation de l'effet de typing au chargement
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 150);
+            }
+        });
+
+        // Gestion des clics sur les éléments de galerie
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.querySelector('.gallery-title').textContent;
+                showNotification(`Découvrez nos réalisations en ${title}. Contactez-nous pour plus d'informations !`);
+            });
+        });
+
+        // Animation des cartes de service au survol
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.service-icon');
+                icon.style.transform = 'scale(1.2) rotate(5deg)';
+                icon.style.transition = 'transform 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.service-icon');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Ajout d'une classe active pour la navigation
+        const style = document.createElement('style');
+        style.textContent = `
+            .nav-links a.active {
+                background: rgba(255, 102, 0, 0.9) !important;
+                transform: translateY(-2px);
+            }
+            
+            .nav-links a.active::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 5px solid #ff6600;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance optimization: Lazy loading pour les animations
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateAnimations);
+                ticking = true;
+            }
+        }
+        
+        function updateAnimations() {
+            // Mise à jour des animations de scroll ici
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', requestTick);
+
+        // Easter egg : effet spécial au clic sur le logo
+        let logoClickCount = 0;
+        document.querySelector('.logo').addEventListener('click', (e) => {
+            e.preventDefault();
+            logoClickCount++;
+            
+            if (logoClickCount === 5) {
+                document.body.style.filter = 'hue-rotate(180deg)';
+                showNotification('🎉 Mode secret activé ! Vous avez découvert notre easter egg !');
+                
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                    logoClickCount = 0;
+                }, 3000);
+            }
+        });
+
+        // Préchargement des ressources critiques
+        const preloadLinks = [
+            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+        ];
+        
+        preloadLinks.forEach(href => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'style';
+            link.href = href;
+            document.head.appendChild(link);
+        });
+
+        console.log('🚀 DS Technologies - Site Web chargé avec succès !');
+        console.log('💡 Développé avec passion pour offrir la meilleure expérience utilisateur.');
+    </script>
+</body>
+</html>
